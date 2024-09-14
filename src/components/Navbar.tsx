@@ -91,7 +91,7 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen}: NavbarInputTypes) => {
             <Button
               
               sx={{
-                display: "flex",
+                display: {xs: "none", md:"flex"},
                 justifyContent: "space-between",
                 alignItems: "center",
                 textTransform: "none",
@@ -99,7 +99,7 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen}: NavbarInputTypes) => {
                 '&:focus': {outline: 'none'}
               }}
             >
-              <Box justifyContent="center" gap="1rem" display="flex" m="1rem 0rem">
+              <Box justifyContent="center" gap="1rem" m="1rem 0rem" display="flex">
                 <Box
                   component="img"
                   alt="profile"

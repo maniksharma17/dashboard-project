@@ -53,7 +53,11 @@ const Daily = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="Daily Sales/Units Overview" subTitle="View a chart of daily sales and units sold."></Header>
-      <Box height="75vh" width="95%">
+      <Box height="75vh"
+      sx={{
+        width: {xs: "300%", lg: "95%"}
+      }}
+      >
         <Box display="flex" justifyContent="flex-end">
           
         <DatePicker

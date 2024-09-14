@@ -25,7 +25,12 @@ const DataGridCustomToolbar = ({searchInput, setSearchInput, setSearch}: any) =>
 
   return (
     <GridToolbarContainer>
-      <FlexBetween width="100%" padding="0.5rem">
+      <FlexBetween width="100%" padding="0.5rem" 
+      sx={{
+        flexDirection: {xs: "column", md:"row"},
+        gap: "1rem"
+      }}
+      >
         <FlexBetween>
           <GridToolbarColumnsButton />
           <GridToolbarDensitySelector />

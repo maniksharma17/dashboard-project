@@ -1,12 +1,13 @@
 import React from 'react'
 import {ResponsiveLine} from "@nivo/line"
-import { useTheme } from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
 import { useGetSalesQuery } from '../state/api'
 
 const OverviewChart = ({isDashboard = false, view}: {isDashboard: boolean, view: string}) => {
 
   const theme = useTheme()
   const {data, isLoading} = useGetSalesQuery()
+  const isMobile = useMediaQuery("(max-width: 700px)");
 
   const [totalSalesLine, totalUnitsLine]: any = React.useMemo(()=>{
 
@@ -88,7 +89,8 @@ const OverviewChart = ({isDashboard = false, view}: {isDashboard: boolean, view:
             },
         }}
         data={view=="sales"? totalSalesLine:totalUnitsLine}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={isDashboard? { top: 10, right: 40, bottom: 25, left: 45 }
+          :{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -103,7 +105,7 @@ const OverviewChart = ({isDashboard = false, view}: {isDashboard: boolean, view:
         axisBottom={{
             tickSize: 0,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: isMobile||isDashboard? -90: 0,
             legend: 'Months',
             legendOffset: 40,
             legendPosition: 'middle',
@@ -136,14 +138,14 @@ const OverviewChart = ({isDashboard = false, view}: {isDashboard: boolean, view:
         
         legends={[
             {
-                anchor: 'bottom-right',
+                anchor: "bottom-right",
                 direction: 'column',
                 justify: false,
-                translateX: 100,
-                translateY: 0,
+                translateX: isDashboard?40:100,
+                translateY: isDashboard?-40:0,
                 itemsSpacing: 0,
-                itemDirection: 'left-to-right',
-                itemWidth: 80,
+                itemDirection: 'top-to-bottom',
+                itemWidth: 60,
                 itemHeight: 20,
                 itemOpacity: 0.75,
                 symbolSize: 12,

@@ -45,7 +45,11 @@ const Daily = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="Monthly Sales/Units Overview" subTitle="View a chart of monthly sales and units sold."></Header>
-      <Box height="75vh" width="95%">
+      <Box height="75vh" 
+      sx={{
+        width: {xs: "200%", lg: "95%"}
+      }}
+      >
         <ResponsiveLine
             theme={{
               "axis": {

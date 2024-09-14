@@ -17,7 +17,7 @@ const Geography = () => {
       {!isLoading ? 
         <Box bgcolor={theme.palette.background.paper} color={"#000000"} height="70vh"  mt="40px" border={`1px solid ${theme.palette.secondary.light}`}
         sx={{
-          width: {lg: "95%", sm: "100%"}
+          width: {lg: "95%", xs: "200%"}
         }}
         >
           <ResponsiveChoropleth

@@ -58,13 +58,13 @@ const Dashboard = () => {
           sx={{
             backgroundColor: theme.palette.primary.light,
             color: theme.palette.primary.dark,
-            fontSize: "14px",
-            padding: "10px 20px",
+            fontSize: {md:"14px", xs: "10px"},
+            padding: {md:"10px 20px", xs: "8px"},
             fontWeight: "bold"
           }}
           >
             <DownloadOutlined sx={{mr: "10px"}} />
-            Download Reports
+            Download
           </Button>
         </Box>
       </FlexBetween>
@@ -121,9 +121,9 @@ const Dashboard = () => {
           gridRow="span 3"
           bgcolor={theme.palette.background.paper}
           borderRadius="0.55rem"
-          p="1.5rem"
+          p="0.5rem"
         > 
-          <Typography fontWeight="bold" variant="h5">Sales By Category</Typography>
+          <Typography fontWeight="bold" variant="h5" p="1rem">Sales By Category</Typography>
           <BreakdownChart isDashboard={true}>
           </BreakdownChart>
         </Box>

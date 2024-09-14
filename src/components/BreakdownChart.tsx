@@ -1,11 +1,11 @@
-import { Box, useTheme } from '@mui/material'
+import { Box, useTheme, useMediaQuery } from '@mui/material'
 import {ResponsivePie} from "@nivo/pie"
 import { useGetSalesQuery } from '../state/api'
 
 const BreakdownChart = ({isDashboard}: {isDashboard: boolean}) => {
   const theme = useTheme()
   const {data, isLoading} = useGetSalesQuery()
-
+  const isMobile = useMediaQuery("(max-width: 700px)");
   if(!data||isLoading) return <>Loading...</>
 
   const colors = [
@@ -26,10 +26,10 @@ const BreakdownChart = ({isDashboard}: {isDashboard: boolean}) => {
 
   return (
     <Box 
-    height={isDashboard? "400px":"100%"}
+    height={isDashboard||isMobile? "400px":"100%"}
     width={undefined}
-    minHeight={isDashboard? "330px":undefined}
-    minWidth={isDashboard? "330px":undefined}
+    minHeight={isDashboard? "300px":undefined}
+    minWidth={isDashboard? "300px":undefined}
     >
       <ResponsivePie
         theme={{
@@ -42,7 +42,8 @@ const BreakdownChart = ({isDashboard}: {isDashboard: boolean}) => {
             }
         }}
         data={formattedData||[]}
-        margin={{ top: 40, right: 40, bottom: 80, left: 40 }}
+        margin={isDashboard? { top: 40, right: 40, bottom: 80, left: 40 }
+            :{ top: 40, right: 40, bottom: 80, left: 40 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
@@ -58,7 +59,7 @@ const BreakdownChart = ({isDashboard}: {isDashboard: boolean}) => {
             ]
         }}
         enableArcLabels={true}
-        enableArcLinkLabels={!isDashboard}
+        enableArcLinkLabels={(isDashboard||isMobile)? false:true}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor={theme.palette.primary.light}
         arcLinkLabelsThickness={2}
@@ -146,15 +147,15 @@ const BreakdownChart = ({isDashboard}: {isDashboard: boolean}) => {
         legends={[
             {
                 anchor: 'bottom',
-                direction: 'row',
+                direction: isMobile? "column":"row",
                 justify: false,
                 translateX: 0,
                 translateY: 56,
-                itemsSpacing: 0,
+                itemsSpacing: isMobile?4:0,
                 itemWidth: isDashboard? 80:100,
                 itemHeight: 18,
                 itemTextColor: theme.palette.primary.light,
-                itemDirection: 'top-to-bottom',
+                itemDirection: isMobile?'left-to-right':'top-to-bottom',
                 itemOpacity: 1,
                 symbolSize: 18,
                 symbolShape: 'circle',
