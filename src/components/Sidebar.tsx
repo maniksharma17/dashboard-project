@@ -76,7 +76,7 @@ const Sidebar = ({
           <Box m="1.5rem 1rem 1rem 3rem">
             <FlexBetween color={theme.palette.secondary.light}>
               <Box display="flex" gap="0.5rem" alignItems="center">
-                <Typography variant="h4" fontWeight="bold">AVONTECH</Typography>
+                <Typography variant="h4" fontWeight="bold">DASHBOARD</Typography>
               </Box>
               
               <CustomIconButton onClick={()=>{setIsSidebarOpen(!isSidebarOpen)}}><ChevronLeft></ChevronLeft></CustomIconButton>
