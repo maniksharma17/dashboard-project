@@ -1,7 +1,7 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Box, useTheme } from "@mui/material"
 import Header from '../components/Header'
-import { DataGrid } from "@mui/x-data-grid"
+import { DataGrid, GridPaginationModel } from "@mui/x-data-grid"
 import { useGetTransactionsQuery } from '../state/api'
 import DataGridCustomToolbar from '../components/DataGridCustomToolbar'
 
@@ -9,14 +9,19 @@ import DataGridCustomToolbar from '../components/DataGridCustomToolbar'
 const Transactions = () => {
   
   const theme = useTheme()
-  const page = useState(0)
-  const pageSize = useState(20)
+  const [page, setPage] = useState(0)
+  const [pageSize, setPageSize] = useState(20)
   const [ sort, setSort ] = useState({})
   const [ search, setSearch ] = useState("")
 
+  useEffect(()=>{
+    setPage(0)
+    setPageSize(20)
+  }, [])
+
   const [ searchInput, setSearchInput ] = useState("")
 
-  const [paginationModel, setPaginationModel] = useState({
+  const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: page,
     pageSize: pageSize,
   });
