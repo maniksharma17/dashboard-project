@@ -103,7 +103,7 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen}: NavbarInputTypes) => {
                 <Box
                   component="img"
                   alt="profile"
-                  src={"src/assets/imageAvatar.jpg"}
+                  src={"https://i.pinimg.com/736x/0d/a7/64/0da7647b0ba9716a310a97d98c1bb8c2.jpg"}
                   height="40px"
                   width="40px"
                   borderRadius="50%"
